@@ -2,14 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/dashBoardActivity">
+    android:id="@+id/nav_graph">
 
-    <activity
-        android:id="@+id/dashBoardActivity"
-        android:name="com.marta.ud5_03_fragments_martamolina.DashBoardActivity"
-        android:label="activity_dashboard"
-        tools:layout="@layout/activity_dashboard" />
     <fragment
         android:id="@+id/userListFragment"
         android:name="com.marta.ud5_03_fragments_martamolina.ui.UserListFragment"
@@ -17,7 +11,11 @@
         tools:layout="@layout/fragment_user_list" >
         <action
             android:id="@+id/action_userListFragment_to_userDetailFragment"
-            app:destination="@id/userDetailFragment" />
+            app:destination="@id/userDetailFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/userDetailFragment"
