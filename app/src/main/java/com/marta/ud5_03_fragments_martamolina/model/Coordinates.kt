@@ -1,6 +1,11 @@
 package com.marta.ud5_03_fragments_martamolina.model
 
+
+import com.google.gson.annotations.SerializedName
+
 data class Coordinates(
-    val latitude: String?,
-    val longitude: String?
+    @SerializedName("latitude")
+    val latitude: String,
+    @SerializedName("longitude")
+    val longitude: String
 )

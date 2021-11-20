@@ -1,16 +1,31 @@
 package com.marta.ud5_03_fragments_martamolina.model
 
+
+import com.google.gson.annotations.SerializedName
+
 data class User(
-    val cell: String ?,
-    val dob: Dob ?,
-    val email: String ? ,
-    val gender: String ? ,
-    val id: Id?,
-    val location: Location ?,
-    val login: Login ? ,
-    val name: Name?,
-    val nat: String?,
-    val phone: String?,
-    val picture: Picture?,
-    val registered: Registered?
+    @SerializedName("gender")
+    val gender: String,
+    @SerializedName("name")
+    val name: Name,
+    @SerializedName("location")
+    val location: Location,
+    @SerializedName("email")
+    val email: String,
+    @SerializedName("login")
+    val login: Login,
+    @SerializedName("dob")
+    val dob: Dob,
+    @SerializedName("registered")
+    val registered: Registered,
+    @SerializedName("phone")
+    val phone: String,
+    @SerializedName("cell")
+    val cell: String,
+    @SerializedName("id")
+    val id: Id,
+    @SerializedName("picture")
+    val picture: Picture,
+    @SerializedName("nat")
+    val nat: String
 )

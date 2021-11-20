@@ -10,8 +10,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.marta.ud5_03_fragments_martamolina.R
 import com.marta.ud5_03_fragments_martamolina.UserAdapter
-import com.marta.ud5_03_fragments_martamolina.databinding.FragmentUserListBinding
 import com.marta.ud5_03_fragments_martamolina.model.Result
+import com.marta.ud5_03_fragments_martamolina.databinding.FragmentUserListBinding
 import com.marta.ud5_03_fragments_martamolina.model.User
 import com.marta.ud5_03_fragments_martamolina.network.RandomUserApi
 import retrofit2.Call
@@ -54,6 +54,7 @@ class UserListFragment : Fragment() {
         val call = service.get500Users().enqueue(object : Callback<Result> {
             override fun onFailure(call: Call<Result>, t: Throwable) {
                 Log.d("OnFaliure", "Failed request")
+                Log.d("OnFailure", t.message.toString())
                 Toast.makeText(context, "faliure", Toast.LENGTH_SHORT).show()
             }
 

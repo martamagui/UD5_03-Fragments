@@ -1,11 +1,21 @@
 package com.marta.ud5_03_fragments_martamolina.model
 
+
+import com.google.gson.annotations.SerializedName
+
 data class Login(
-    val md5: String?,
-    val password: String?,
-    val salt: String?,
-    val sha1: String?,
-    val sha256: String?,
-    val username: String?,
-    val uuid: String?
+    @SerializedName("uuid")
+    val uuid: String,
+    @SerializedName("username")
+    val username: String,
+    @SerializedName("password")
+    val password: String,
+    @SerializedName("salt")
+    val salt: String,
+    @SerializedName("md5")
+    val md5: String,
+    @SerializedName("sha1")
+    val sha1: String,
+    @SerializedName("sha256")
+    val sha256: String
 )

@@ -1,6 +1,11 @@
 package com.marta.ud5_03_fragments_martamolina.model
 
+
+import com.google.gson.annotations.SerializedName
+
 data class Registered(
-    val age: Int?,
-    val date: String?
+    @SerializedName("date")
+    val date: String,
+    @SerializedName("age")
+    val age: Int
 )

@@ -1,6 +1,11 @@
 package com.marta.ud5_03_fragments_martamolina.model
 
+
+import com.google.gson.annotations.SerializedName
+
 data class Timezone(
-    val description: String?,
-    val offset: String?
+    @SerializedName("offset")
+    val offset: String,
+    @SerializedName("description")
+    val description: String
 )

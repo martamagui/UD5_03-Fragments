@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.marta.ud5_03_fragments_martamolina.databinding.ItemUserBinding
-
 import com.marta.ud5_03_fragments_martamolina.model.User
+
 import java.util.*
 
 //TODO Implementar el UserAdapter a la RV. Crear Conexion con la api
