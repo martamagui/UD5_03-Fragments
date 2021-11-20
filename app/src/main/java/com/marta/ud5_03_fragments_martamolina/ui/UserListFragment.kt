@@ -12,6 +12,7 @@ import com.marta.ud5_03_fragments_martamolina.R
 import com.marta.ud5_03_fragments_martamolina.UserAdapter
 import com.marta.ud5_03_fragments_martamolina.databinding.FragmentUserListBinding
 import com.marta.ud5_03_fragments_martamolina.model.Result
+import com.marta.ud5_03_fragments_martamolina.model.User
 import com.marta.ud5_03_fragments_martamolina.network.RandomUserApi
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,7 +23,7 @@ class UserListFragment : Fragment() {
     private val binding
         get() = _binding!!
 
-    private val adapter = UserAdapter {
+    private val adaptador = UserAdapter {
         val fg = UserDetailFragment.newInstance()
         parentFragmentManager.beginTransaction()
             .setReorderingAllowed(true)
@@ -43,7 +44,7 @@ class UserListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         requestData()
-        binding.rvUsers.adapter = adapter
+        binding.rvUsers.adapter = adaptador
         binding.rvUsers.layoutManager = LinearLayoutManager(context)
         //TODO ¿Should I add dividers to the RV?
     }
@@ -53,11 +54,14 @@ class UserListFragment : Fragment() {
         val call = service.get500Users().enqueue(object : Callback<Result> {
             override fun onFailure(call: Call<Result>, t: Throwable) {
                 Log.d("OnFaliure", "Failed request")
+                Toast.makeText(context, "faliure", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<Result>, response: Response<Result>) =
                 if (response.isSuccessful) {
-                    adapter.submitList(response.body()?.results)
+                    Toast.makeText(context, "todo ok", Toast.LENGTH_SHORT).show()
+                    val UserList: List<User>? = response.body()?.results
+                    adaptador.submitList(UserList)
                 } else {
                     Toast.makeText(context, "Error en la petición", Toast.LENGTH_SHORT).show()
                 }

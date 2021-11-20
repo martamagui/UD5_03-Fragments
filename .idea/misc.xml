@@ -3,10 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/marta/Documents/GitHub/Android/UD5_03-Fragments-MartaMolina/app/src/main/res/layout/activity_dashboard.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/marta/Documents/GitHub/Android/UD5_03-Fragments-MartaMolina/app/src/main/res/layout/activity_dashboard.xml" value="0.22727272727272727" />
         <entry key="..\:/Users/marta/Documents/GitHub/Android/UD5_03-Fragments-MartaMolina/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/marta/Documents/GitHub/Android/UD5_03-Fragments-MartaMolina/app/src/main/res/layout/fragment_user_detail.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/marta/Documents/GitHub/Android/UD5_03-Fragments-MartaMolina/app/src/main/res/layout/fragment_user_list.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/marta/Documents/GitHub/Android/UD5_03-Fragments-MartaMolina/app/src/main/res/layout/fragment_user_list.xml" value="0.33" />
         <entry key="..\:/Users/marta/Documents/GitHub/Android/UD5_03-Fragments-MartaMolina/app/src/main/res/layout/item_user.xml" value="0.36666666666666664" />
       </map>
     </option>

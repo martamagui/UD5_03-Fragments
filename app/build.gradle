@@ -9,7 +9,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.example.demo04network"
+        applicationId "com.example.ud503fragmentsmartamolina"
         minSdk 23
         targetSdk 31
         versionCode 1
