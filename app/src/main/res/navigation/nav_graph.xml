@@ -22,5 +22,8 @@
         android:id="@+id/userDetailFragment"
         android:name="com.marta.ud5_03_fragments_martamolina.ui.UserDetailFragment"
         android:label="fragment_user_detail"
-        tools:layout="@layout/fragment_user_detail" />
+        tools:layout="@layout/fragment_user_detail" >
+        <argument android:name="cell" />
+        <argument android:name="f_name" />
+    </fragment>
 </navigation>
