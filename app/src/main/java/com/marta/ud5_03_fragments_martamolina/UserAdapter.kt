@@ -2,18 +2,17 @@ package com.marta.ud5_03_fragments_martamolina
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.marta.ud5_03_fragments_martamolina.databinding.ActivityDashboardBinding
 import com.marta.ud5_03_fragments_martamolina.databinding.ItemUserBinding
 import com.marta.ud5_03_fragments_martamolina.model.User
 import java.util.*
 
+//TODO Implementar el UserAdapter a la RV. Crear Conexion con la api
 class UserAdapter(
-    private val onRepositoryClicked: (User) -> Unit,
-    diffCallback: DiffUtil.ItemCallback<User>
-) : androidx.recyclerview.widget.ListAdapter<User, UserAdapter.ViewHolder>(diffCallback) {
+    diffCallback: () -> Unit
+) : ListAdapter<User, UserAdapter.ViewHolder>(UserItemCallBack()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserAdapter.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding: ItemUserBinding = ItemUserBinding.inflate(inflater, parent, false)
