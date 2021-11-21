@@ -12,13 +12,15 @@ fun ImageView.imageUrl(imageUrl: String) {
         .placeholder(R.drawable.ic_launcher_foreground)
         .into(this)
 }
-fun concatAndFormatFullName (user: User): String {
-    return  (user.name?.title)?.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } + " " + (user.name?.first)?.replaceFirstChar {
+
+fun concatAndFormatFullName(user: User): String {
+    return (user.name?.title)?.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } + " " + (user.name?.first)?.replaceFirstChar {
         if (it.isLowerCase()) it.titlecase(
             Locale.getDefault()
         ) else it.toString()
     } + " " + (user.name?.last)?.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
 }
+
 fun codeToCountry(code: String): String? {
     // v1.3: AU, BR, CA, CH, DE, DK, ES, FI, FR, GB, IE, IR, NO, NL, NZ, TR, US
 
@@ -43,7 +45,7 @@ fun codeToCountry(code: String): String? {
     )
     return countries[code]
 }
-fun formatDate(date: String): String{
-    //TODO format date data Example: 1993-07-20T09:44:18.674Z pick up only the first 10 digits
-    return ""
+
+fun formatDate(date: String): String {
+    return date.substring(0, 10)
 }

@@ -31,14 +31,13 @@ class UserDetailFragment : Fragment() {
         val userSent: User? =
             (activity?.application as App).userList.firstOrNull { args.cell == it.cell }
         if (userSent != null) {
-            binding.imageView.imageUrl(userSent.picture.large)
+            binding.ivDetail.imageUrl(userSent.picture.large)
             binding.tvDetailName.text =
-                if (userSent.name != null) concatAndFormatFullName(userSent).toString() else binding.tvDetailName.text
+                if (userSent.name != null) concatAndFormatFullName(userSent) else binding.tvDetailName.text
             val age: String? = (userSent.dob.age).toString()
-            binding.tvAge.text = age
-            binding.tvBirthDate.text = userSent.dob.date
-            binding.tvDetailCountry.text = codeToCountry(userSent.nat)
+            binding.tvAge.text = if((userSent.dob.age).toString() != null) age else   binding.tvAge.text
+            binding.tvBirthDate.text =if(userSent.dob.date!=null) formatDate(userSent.dob.date) else binding.tvBirthDate.text
+            binding.tvDetailCountry.text = if(userSent.nat!=null) codeToCountry(userSent.nat) else binding.tvDetailCountry.text
         }
-
     }
 }

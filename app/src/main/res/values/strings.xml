@@ -2,11 +2,11 @@
     <string name="app_name">UD5_03-Fragments-MartaMolina</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="name">No name found</string>
-    <string name="title_birth">Birth date: </string>
+    <string name="title_birth">Birth date:</string>
     <string name="birth">Missing information</string>
-    <string name="title_age">Age: </string>
+    <string name="title_age">Age:</string>
     <string name="age">Missing information</string>
-    <string name="title_country">Country: </string>
+    <string name="title_detail_country">Country:</string>
     <string name="country">Uknow country</string>
     <string name="image_description">Profile picture</string>
 

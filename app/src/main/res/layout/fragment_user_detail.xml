@@ -7,114 +7,98 @@
     tools:context=".ui.UserDetailFragment">
 
 
-    <LinearLayout
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:padding="16dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                tools:src="@tools:sample/avatars" />
-        </LinearLayout>
-
-        <LinearLayout
+        <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:gravity="center">
 
-            <LinearLayout
+            <ImageView
+                android:id="@+id/iv_detail"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_margin="16dp"
+                tools:src="@tools:sample/avatars" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_detail_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center|center_horizontal"
-                android:orientation="horizontal"
-                android:paddingStart="16dp"
-                android:paddingTop="32dp"
-                android:paddingEnd="16dp"
-                android:paddingBottom="32dp">
+                android:textAlignment="center"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                tools:text="@string/name" />
+        </TableRow>
 
-                <TextView
-                    android:id="@+id/tv_detail_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    tools:text="@string/name" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_birth_date_title"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp">
+                android:text="@string/title_birth"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_birth_date_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Birth date: "
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tv_birth_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="@string/birth" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_birth_date"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp">
+                android:text="@string/birth" />
+        </TableRow>
 
-                <TextView
-                    android:id="@+id/tv_age_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="@string/title_age"
-                    android:text="Age: "
-                    android:textStyle="bold" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
 
-                <TextView
-                    android:id="@+id/tv_age"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="@string/age" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_age_title"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp">
+                android:text="@string/title_age"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_title_country"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    tools:text="@string/title_country" />
+            <TextView
+                android:id="@+id/tv_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/age" />
+        </TableRow>
 
-                <TextView
-                    android:id="@+id/tv_detail_country"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="@string/country" />
-            </LinearLayout>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
 
-        </LinearLayout>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_title_country"
+                android:layout_width="114dp"
+                android:layout_height="wrap_content"
+                android:text="@string/title_detail_country"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_detail_country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/country" />
+        </TableRow>
+
+    </TableLayout>
 
 </FrameLayout>
