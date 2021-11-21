@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.marta.ud5_03_fragments_martamolina.App
 import com.marta.ud5_03_fragments_martamolina.DashBoardActivity
 import com.marta.ud5_03_fragments_martamolina.R
 import com.marta.ud5_03_fragments_martamolina.UserAdapter
@@ -64,8 +65,9 @@ class UserListFragment : Fragment() {
 
             override fun onResponse(call: Call<Result>, response: Response<Result>) =
                 if (response.isSuccessful) {
-                    val UserList: List<User>? = response.body()?.results
-                    adaptador.submitList(UserList)
+                    var userList = (activity?.application as App).userList
+                    userList = response.body()?.results!!
+                    adaptador.submitList(userList)
                 } else {
                     Toast.makeText(context, "Error en la petición", Toast.LENGTH_SHORT).show()
                 }
