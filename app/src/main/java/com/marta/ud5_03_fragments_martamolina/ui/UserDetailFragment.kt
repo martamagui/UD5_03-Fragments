@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.marta.ud5_03_fragments_martamolina.R
 import com.marta.ud5_03_fragments_martamolina.databinding.FragmentUserDetailBinding
+import com.marta.ud5_03_fragments_martamolina.App
+
 
 class UserDetailFragment : Fragment() {
     private val args : UserDetailFragmentArgs by navArgs()
@@ -26,6 +28,8 @@ class UserDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val userSent = (activity?.application as App).userList.firstOrNull { args.cell == it.cell }
+
         binding.tvFirstName.text = args.fName
     }
 }

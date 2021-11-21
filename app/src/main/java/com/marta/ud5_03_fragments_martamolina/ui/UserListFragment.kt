@@ -58,7 +58,7 @@ class UserListFragment : Fragment() {
         val service = RandomUserApi.service
         val call = service.get500Users().enqueue(object : Callback<Result> {
             override fun onFailure(call: Call<Result>, t: Throwable) {
-                Log.d("OnFaliure", "Failed request")
+                Log.d("OnFaliure", "(╯°□°）╯︵ ┻━┻")
                 Log.d("OnFailure", t.message.toString())
                 Toast.makeText(context, "faliure", Toast.LENGTH_SHORT).show()
             }
