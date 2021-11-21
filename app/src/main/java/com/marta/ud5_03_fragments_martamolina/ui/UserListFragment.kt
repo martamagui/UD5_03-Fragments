@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.marta.ud5_03_fragments_martamolina.DashBoardActivity
 import com.marta.ud5_03_fragments_martamolina.R
 import com.marta.ud5_03_fragments_martamolina.UserAdapter
 import com.marta.ud5_03_fragments_martamolina.model.Result
@@ -31,6 +33,7 @@ class UserListFragment : Fragment() {
         )
         // TODO fix navigation: java.lang.IllegalStateException: View android.widget.FrameLayout{7b4f76c V.E...... ........ 0,0-1080,1895} does not have a NavController set
         findNavController().navigate(action)
+
     }
 
     override fun onCreateView(
@@ -61,21 +64,11 @@ class UserListFragment : Fragment() {
 
             override fun onResponse(call: Call<Result>, response: Response<Result>) =
                 if (response.isSuccessful) {
-                    Toast.makeText(context, "todo ok", Toast.LENGTH_SHORT).show()
                     val UserList: List<User>? = response.body()?.results
                     adaptador.submitList(UserList)
                 } else {
                     Toast.makeText(context, "Error en la petición", Toast.LENGTH_SHORT).show()
                 }
         })
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            UserListFragment().apply {
-                arguments = Bundle().apply {
-                }
-            }
     }
 }

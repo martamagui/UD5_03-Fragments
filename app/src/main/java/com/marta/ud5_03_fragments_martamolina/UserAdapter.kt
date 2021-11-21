@@ -32,6 +32,7 @@ class UserAdapter(private val onUserClicked: (User) -> Unit) :
                 ) else it.toString()
             } + " " + (user.name?.last)?.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
         holder.binding.tvCountry.text = user.nat
+        holder.binding.ivUser.imageUrl(user.picture.medium)
         holder.binding.root.setOnClickListener { onUserClicked(user) }
     }
 
