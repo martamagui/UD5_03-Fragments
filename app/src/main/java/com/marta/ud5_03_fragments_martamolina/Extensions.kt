@@ -19,3 +19,31 @@ fun concatAndFormatFullName (user: User): String {
         ) else it.toString()
     } + " " + (user.name?.last)?.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
 }
+fun codeToCountry(code: String): String? {
+    // v1.3: AU, BR, CA, CH, DE, DK, ES, FI, FR, GB, IE, IR, NO, NL, NZ, TR, US
+
+    val countries: HashMap<String, String> = hashMapOf(
+        "AU" to "Australia",
+        "BR" to "Brazil",
+        "CA" to "Canada",
+        "CH" to "Switzerland",
+        "DE" to "Germany",
+        "DK" to "Denmark",
+        "ES" to "Spain",
+        "FI" to "Finland",
+        "FR" to "France",
+        "GB" to "Great Britain",
+        "IE" to "Ireland",
+        "IR" to "Iran",
+        "NO" to "Norway",
+        "NL" to "Netherlands",
+        "NZ" to "New Zealand",
+        "TR" to "Turkey",
+        "US" to "United States"
+    )
+    return countries[code]
+}
+fun formatDate(date: String): String{
+    //TODO format date data Example: 1993-07-20T09:44:18.674Z pick up only the first 10 digits
+    return ""
+}
