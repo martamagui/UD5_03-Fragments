@@ -8,5 +8,6 @@
     <string name="age">Missing information</string>
     <string name="title_country">Country: </string>
     <string name="country">Uknow country</string>
+    <string name="image_description">Profile picture</string>
 
 </resources>

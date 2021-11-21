@@ -39,7 +39,8 @@ class UserDetailFragment : Fragment() {
                 if (userSent.name != null) concatAndFormatFullName(userSent).toString() else binding.tvDetailName.text
             val age: String? = (userSent.dob.age).toString()
             binding.tvAge.text = age
-
+            binding.tvBirthDate.text = userSent.dob.date
+            binding.tvDetailCountry.text = userSent.nat
         }
 
     }
