@@ -9,13 +9,16 @@ import androidx.navigation.fragment.navArgs
 import com.marta.ud5_03_fragments_martamolina.R
 import com.marta.ud5_03_fragments_martamolina.databinding.FragmentUserDetailBinding
 import com.marta.ud5_03_fragments_martamolina.App
+import com.marta.ud5_03_fragments_martamolina.concatAndFormatFullName
+import com.marta.ud5_03_fragments_martamolina.imageUrl
+import com.marta.ud5_03_fragments_martamolina.model.User
 
 
 class UserDetailFragment : Fragment() {
-    private val args : UserDetailFragmentArgs by navArgs()
+    private val args: UserDetailFragmentArgs by navArgs()
     private var _binding: FragmentUserDetailBinding? = null
     private val binding
-    get() = _binding!!
+        get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,8 +31,16 @@ class UserDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val userSent = (activity?.application as App).userList.firstOrNull { args.cell == it.cell }
+        val userSent: User? =
+            (activity?.application as App).userList.firstOrNull { args.cell == it.cell }
+        if (userSent != null) {
+            binding.imageView.imageUrl(userSent.picture.large)
+            binding.tvDetailName.text =
+                if (userSent.name != null) concatAndFormatFullName(userSent).toString() else binding.tvDetailName.text
+            val age: String? = (userSent.dob.age).toString()
+            binding.tvAge.text = age
 
-        binding.tvFirstName.text = args.fName
+        }
+
     }
 }

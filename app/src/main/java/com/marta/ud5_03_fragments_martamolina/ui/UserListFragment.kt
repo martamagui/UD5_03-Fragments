@@ -1,5 +1,7 @@
 package com.marta.ud5_03_fragments_martamolina.ui
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,10 +12,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.marta.ud5_03_fragments_martamolina.App
-import com.marta.ud5_03_fragments_martamolina.DashBoardActivity
-import com.marta.ud5_03_fragments_martamolina.R
-import com.marta.ud5_03_fragments_martamolina.UserAdapter
+import com.marta.ud5_03_fragments_martamolina.*
 import com.marta.ud5_03_fragments_martamolina.model.Result
 import com.marta.ud5_03_fragments_martamolina.databinding.FragmentUserListBinding
 import com.marta.ud5_03_fragments_martamolina.model.User
@@ -26,13 +25,13 @@ class UserListFragment : Fragment() {
     private var _binding: FragmentUserListBinding? = null
     private val binding
         get() = _binding!!
+    private lateinit var Activity : DashBoardActivity
 
     private val adaptador = UserAdapter {
         val action = UserListFragmentDirections.actionUserListFragmentToUserDetailFragment(
             it.cell,
             it.name.first
         )
-        // TODO fix navigation: java.lang.IllegalStateException: View android.widget.FrameLayout{7b4f76c V.E...... ........ 0,0-1080,1895} does not have a NavController set
         findNavController().navigate(action)
 
     }
@@ -56,6 +55,9 @@ class UserListFragment : Fragment() {
 
     private fun requestData() {
         val service = RandomUserApi.service
+        Activity = context as DashBoardActivity
+        val app = Activity.application as App
+        var userList = app.userList
         val call = service.get500Users().enqueue(object : Callback<Result> {
             override fun onFailure(call: Call<Result>, t: Throwable) {
                 Log.d("OnFaliure", "(╯°□°）╯︵ ┻━┻")
@@ -65,8 +67,8 @@ class UserListFragment : Fragment() {
 
             override fun onResponse(call: Call<Result>, response: Response<Result>) =
                 if (response.isSuccessful) {
-                    var userList = (activity?.application as App).userList
-                    userList = response.body()?.results!!
+                    userList.addAll(response.body()?.results!!)
+                    Log.d("recogido", app.userList[0].toString())
                     adaptador.submitList(userList)
                 } else {
                     Toast.makeText(context, "Error en la petición", Toast.LENGTH_SHORT).show()
