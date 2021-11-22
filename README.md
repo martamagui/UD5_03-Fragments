@@ -7,7 +7,7 @@ The presenting applications is conformed by 2 fragments. Wich are meant to show:
 - A user list taking the data from an external Api.
 - A detailed view of the clicked user.
 
-##TO DO list:
+## TO DO list:
 - [x] Create a succesful Api call.
 - [x] Implement Detail Activity
 - [x] Change nationalities to the country name or flag
