@@ -58,9 +58,7 @@ class UserListFragment : Fragment() {
     private fun requestData() {
         val service = RandomUserApi.service
         //TODO preguntar si esto está bien hecho con la application y la activity
-        Activity = context as DashBoardActivity
-        val app = Activity.application as App
-        var userList = app.userList
+        var userList = (activity?.application as? App)?.userList
         val call = service.get500Users().enqueue(object : Callback<Result> {
             override fun onFailure(call: Call<Result>, t: Throwable) {
                 Log.d("OnFaliure", "(╯°□°）╯︵ ┻━┻")
@@ -70,8 +68,8 @@ class UserListFragment : Fragment() {
 
             override fun onResponse(call: Call<Result>, response: Response<Result>) =
                 if (response.isSuccessful) {
-                    userList.addAll(response.body()?.results!!)
-                    Log.d("recogido", app.userList[0].toString())
+                    userList?.addAll(response.body()?.results!!)
+                    //Log.d("recogido", app.userList[0].toString())
                     adaptador.submitList(userList)
                     binding.linearProgressIndicator.visibility = View.GONE
                 } else {

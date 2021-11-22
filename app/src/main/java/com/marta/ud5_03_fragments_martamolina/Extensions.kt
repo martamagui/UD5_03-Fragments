@@ -5,6 +5,7 @@ import androidx.annotation.DrawableRes
 import androidx.constraintlayout.helper.widget.MotionPlaceholder
 import com.marta.ud5_03_fragments_martamolina.model.User
 import com.squareup.picasso.Picasso
+import com.squareup.picasso.Picasso.get
 import java.util.*
 
 fun ImageView.imageUrl(imageUrl: String) {
