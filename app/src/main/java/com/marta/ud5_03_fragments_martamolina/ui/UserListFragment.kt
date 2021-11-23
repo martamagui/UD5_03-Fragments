@@ -29,7 +29,7 @@ class UserListFragment : Fragment() {
     private val binding
         get() = _binding!!
     private lateinit var userList: MutableList<User>
-    private lateinit var searchList: MutableList<User>
+    private var searchList: MutableList<User> = mutableListOf()
 
 
     private val adaptador = UserAdapter {
@@ -57,41 +57,44 @@ class UserListFragment : Fragment() {
         userList = (activity?.application as? App)?.userList!!
         binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(newText: String?): Boolean {
-                searchList.addAll(userList)
-                searchList.clear()
-                val queryText = newText!!.lowercase()
-                if (queryText.isNotEmpty()) {
-                    searchList.filter { user ->
-                        user.name.first.lowercase().contains(newText.lowercase())
-                    }
-
-//                      || it.name.last.contains(queryText) || it.name.first.contains(
-//                        queryText
-//                    ) || it.name.last.contains(
-//                        queryText
-//                    ) || codeToCountry(it.nat)?.contains(queryText) == true
-                    Log.d("Filtados:", searchList.size.toString())
-                    adaptador.submitList(searchList)
-                    adaptador.notifyDataSetChanged()
-                } else {
-                    adaptador.submitList(userList)
-                    adaptador.notifyDataSetChanged()
+                if (newText != null) {
+                    filterQuery(newText)
                 }
                 return false
             }
-
             override fun onQueryTextChange(newText: String?): Boolean {
-
+                if (newText != null) {
+                    filterQuery(newText)
+                }
                 return false
             }
         })
-
-
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun filterQuery(newText: String) {
+        searchList.clear()
+        val queryText = newText!!.lowercase()
+        if (queryText.isNotEmpty()) {
+            searchList = userList.filter { it ->
+                it.name.first.lowercase().contains(newText.lowercase()) || it.name.last.contains(
+                    queryText
+                ) || it.name.first.contains(
+                    queryText
+                ) || it.name.last.contains(
+                    queryText
+                ) || codeToCountry(it.nat)?.contains(queryText) == true
+            } as MutableList<User>
+            adaptador.submitList(searchList)
+            adaptador.notifyDataSetChanged()
+        } else {
+            adaptador.submitList(userList)
+            adaptador.notifyDataSetChanged()
+        }
     }
 
     private fun requestData() {
