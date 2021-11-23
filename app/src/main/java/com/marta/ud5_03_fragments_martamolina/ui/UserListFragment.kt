@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
@@ -27,7 +28,9 @@ class UserListFragment : Fragment() {
     private var _binding: FragmentUserListBinding? = null
     private val binding
         get() = _binding!!
-    private lateinit var Activity : DashBoardActivity
+    private lateinit var userList: MutableList<User>
+    private lateinit var searchList: MutableList<User>
+
 
     private val adaptador = UserAdapter {
         val action = UserListFragmentDirections.actionUserListFragmentToUserDetailFragment(
@@ -35,7 +38,6 @@ class UserListFragment : Fragment() {
             it.name.first
         )
         findNavController().navigate(action)
-
     }
 
     override fun onCreateView(
@@ -48,33 +50,70 @@ class UserListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         requestData()
         binding.rvUsers.adapter = adaptador
-        binding.rvUsers.layoutManager = GridLayoutManager(context,2)
+        binding.rvUsers.layoutManager = GridLayoutManager(context, 2)
         //TODO ¿Should I add dividers to the RV?
+        userList = (activity?.application as? App)?.userList!!
+        binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(newText: String?): Boolean {
+                searchList.addAll(userList)
+                searchList.clear()
+                val queryText = newText!!.lowercase()
+                if (queryText.isNotEmpty()) {
+                    searchList.filter { user ->
+                        user.name.first.lowercase().contains(newText.lowercase())
+                    }
+
+//                      || it.name.last.contains(queryText) || it.name.first.contains(
+//                        queryText
+//                    ) || it.name.last.contains(
+//                        queryText
+//                    ) || codeToCountry(it.nat)?.contains(queryText) == true
+                    Log.d("Filtados:", searchList.size.toString())
+                    adaptador.submitList(searchList)
+                    adaptador.notifyDataSetChanged()
+                } else {
+                    adaptador.submitList(userList)
+                    adaptador.notifyDataSetChanged()
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                return false
+            }
+        })
+
+
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun requestData() {
         val service = RandomUserApi.service
-        //TODO preguntar si esto está bien hecho con la application y la activity
-        var userList = (activity?.application as? App)?.userList
         val call = service.get500Users().enqueue(object : Callback<Result> {
             override fun onFailure(call: Call<Result>, t: Throwable) {
-                Log.d("OnFaliure", "(╯°□°）╯︵ ┻━┻")
                 Log.d("OnFailure", t.message.toString())
-                Toast.makeText(context, "faliure", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, R.string.error_msg, Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<Result>, response: Response<Result>) =
                 if (response.isSuccessful) {
                     userList?.addAll(response.body()?.results!!)
-                    //Log.d("recogido", app.userList[0].toString())
                     adaptador.submitList(userList)
-                    binding.linearProgressIndicator.visibility = View.GONE
+                    hideProgressBar()
                 } else {
-                    Toast.makeText(context, "Error en la petición", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, R.string.error_msg, Toast.LENGTH_SHORT).show()
                 }
         })
+    }
+
+    private fun hideProgressBar() {
+        binding.linearProgressIndicator.visibility = View.GONE
     }
 }

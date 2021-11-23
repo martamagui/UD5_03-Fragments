@@ -40,4 +40,8 @@ class UserDetailFragment : Fragment() {
             binding.tvDetailCountry.text = if(userSent.nat!=null) codeToCountry(userSent.nat) else binding.tvDetailCountry.text
         }
     }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

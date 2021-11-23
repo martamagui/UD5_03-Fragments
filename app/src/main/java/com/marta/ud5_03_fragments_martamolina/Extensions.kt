@@ -1,11 +1,19 @@
 package com.marta.ud5_03_fragments_martamolina
 
+import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.constraintlayout.helper.widget.MotionPlaceholder
+import com.marta.ud5_03_fragments_martamolina.model.Result
 import com.marta.ud5_03_fragments_martamolina.model.User
+import com.marta.ud5_03_fragments_martamolina.network.RandomUserApi
+import com.marta.ud5_03_fragments_martamolina.network.RandomUserApi.service
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Picasso.get
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 
 fun ImageView.imageUrl(imageUrl: String) {

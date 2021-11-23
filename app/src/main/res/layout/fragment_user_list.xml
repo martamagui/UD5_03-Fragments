@@ -8,31 +8,24 @@
     android:orientation="vertical">
 
     <!-- Linear progress indicator -->
-    <LinearLayout
+    <SearchView
+        android:id="@+id/sv_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </SearchView>
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/linearProgressIndicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:indeterminate="true" />
 
-        <SearchView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_users"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        </SearchView>
-
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/linearProgressIndicator"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:indeterminate="true" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_users"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-    </LinearLayout>
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

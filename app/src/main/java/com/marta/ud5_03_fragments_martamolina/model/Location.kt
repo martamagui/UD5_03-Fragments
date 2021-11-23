@@ -13,7 +13,7 @@ data class Location(
     @SerializedName("country")
     val country: String,
     @SerializedName("postcode")
-    val postcode: Any?,
+    val postcode: String,
     @SerializedName("coordinates")
     val coordinates: Coordinates,
     @SerializedName("timezone")
