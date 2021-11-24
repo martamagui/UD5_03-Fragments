@@ -32,7 +32,6 @@ fun concatAndFormatFullName(user: User): String {
 
 fun codeToCountry(code: String): String? {
     // v1.3: AU, BR, CA, CH, DE, DK, ES, FI, FR, GB, IE, IR, NO, NL, NZ, TR, US
-
     val countries: HashMap<String, String> = hashMapOf(
         "AU" to "Australia",
         "BR" to "Brazil",

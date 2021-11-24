@@ -11,9 +11,9 @@ The presenting applications is conformed by 2 fragments. Wich are meant to show:
 - [x] Create a succesful Api call.
 - [x] Implement Detail Activity
 - [x] Change nationalities to the country name or flag
-- [ ] Add searchview and the needed functions, maybe from Material Design Site?
-- [ ] Change User item for card views.
+- [x] Add searchview and the needed functions, maybe from Material Design Site?
+- [x] Change User item for card views.
 - [ ] Look for a cute item decorations.
--
+
 
 
