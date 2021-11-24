@@ -30,14 +30,11 @@ class UserListFragment : Fragment() {
         get() = _binding!!
     private lateinit var userList: MutableList<User>
     private var searchList: MutableList<User> = mutableListOf()
+    private var random = ""
 
 
     private val adaptador = UserAdapter {
-        val action = UserListFragmentDirections.actionUserListFragmentToUserDetailFragment(
-            it.cell,
-            it.name.first
-        )
-        findNavController().navigate(action)
+        viewChange(it.cell, it.name.first, "")
     }
 
     override fun onCreateView(
@@ -53,7 +50,6 @@ class UserListFragment : Fragment() {
         requestData()
         binding.rvUsers.adapter = adaptador
         binding.rvUsers.layoutManager = GridLayoutManager(context, 2)
-        //TODO ¿Should I add dividers to the RV?
         userList = (activity?.application as? App)?.userList!!
         binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(newText: String?): Boolean {
@@ -62,6 +58,7 @@ class UserListFragment : Fragment() {
                 }
                 return false
             }
+
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText != null) {
                     filterQuery(newText)
@@ -69,6 +66,10 @@ class UserListFragment : Fragment() {
                 return false
             }
         })
+        binding.btnRandom.setOnClickListener{
+            Toast.makeText(context, "Random Spaniard", Toast.LENGTH_SHORT).show()
+            viewChange("","","random")
+        }
     }
 
     override fun onDestroyView() {
@@ -98,8 +99,8 @@ class UserListFragment : Fragment() {
     }
 
     private fun requestData() {
-        val service = RandomUserApi.service
-        val call = service.get500Users().enqueue(object : Callback<Result> {
+        val service = RandomUserApi.service.get500Users()
+        val call = service.enqueue(object : Callback<Result> {
             override fun onFailure(call: Call<Result>, t: Throwable) {
                 Log.d("OnFailure", t.message.toString())
                 Toast.makeText(context, R.string.error_msg, Toast.LENGTH_SHORT).show()
@@ -114,6 +115,15 @@ class UserListFragment : Fragment() {
                     Toast.makeText(context, R.string.error_msg, Toast.LENGTH_SHORT).show()
                 }
         })
+    }
+
+    private fun viewChange(cell: String, name: String, random: String) {
+        val action = UserListFragmentDirections.actionUserListFragmentToUserDetailFragment(
+            cell,
+            name,
+            random
+        )
+        findNavController().navigate(action)
     }
 
     private fun hideProgressBar() {

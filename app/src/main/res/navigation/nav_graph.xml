@@ -25,5 +25,6 @@
         tools:layout="@layout/fragment_user_detail" >
         <argument android:name="cell" />
         <argument android:name="f_name" />
+        <argument android:name="random" />
     </fragment>
 </navigation>
