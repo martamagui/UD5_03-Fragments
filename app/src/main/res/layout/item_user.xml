@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#AA9EBA"
     android:layout_margin="8dp"
+    android:background="#F3F1F6"
     android:checkable="true"
     android:clickable="true"
     android:focusable="true"
     android:padding="8dp"
-    app:cardElevation="1dp"
+    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="8dp"
+    app:cardElevation="1dp"
     app:strokeColor="@color/material_on_surface_stroke"
     app:strokeWidth="1dp">
 
@@ -20,20 +21,22 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
+
         android:padding="8dp">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
-            app:cardCornerRadius="36dp"
+            android:foregroundGravity="center"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="52dp"
             app:cardElevation="1dp">
 
             <ImageView
                 android:id="@+id/iv_user"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_margin="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -44,9 +47,11 @@
             android:id="@+id/tv_user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:fontFamily="@font/fontspringmedium"
             android:text="User Name"
             android:textAlignment="center"
+            android:textColor="#222123"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/iv_user"
@@ -59,6 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="País"
+            android:textColor="#222123"
             app:layout_constraintEnd_toEndOf="@+id/tv_user_name"
             app:layout_constraintStart_toStartOf="@+id/tv_user_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_user_name" />

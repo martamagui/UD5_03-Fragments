@@ -12,7 +12,9 @@
         android:id="@+id/sv_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fadingEdge="vertical">
+        android:fadingEdge="vertical"
+        app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+        >
 
     </SearchView>
 
